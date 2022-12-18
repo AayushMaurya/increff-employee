@@ -12,9 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class Hello {
-    private final static Logger logger = Logger.getLogger(Hello.class.getName());
+public class EmployeeApi {
+    private final static Logger logger = Logger.getLogger(EmployeeApi.class.getName());
+    private static  Connection con;
     public static void main(String[] args) throws SQLException, ClassNotFoundException, FileNotFoundException, IOException
+    {
+
+    }
+
+    public EmployeeApi() throws Exception
     {
         BasicConfigurator.configure();
         Properties props = new Properties();
@@ -22,30 +28,20 @@ public class Hello {
                 "\\employee.properties");
         props.load(inStream);
 
-            Class.forName(props.getProperty("jdbc.driver"));
-            Connection con = DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.user"),
-                    props.getProperty("jdbc.password"));
-
-            insert(con);
-            select(con);
-            delete(con);
-
-            con.close();
+        Class.forName(props.getProperty("jdbc.driver"));
+        con = DriverManager.getConnection(props.getProperty("jdbc.url"), props.getProperty("jdbc.user"),
+                props.getProperty("jdbc.password"));
     }
 
-    private static void select(Connection con) throws SQLException
+    public ResultSet select() throws SQLException
     {
         logger.info("Selecting Employee");
         Statement stmt = con.createStatement();
         ResultSet res = stmt.executeQuery("select * from employees");
-        while(res.next())
-        {
-            logger.info(res.getInt(1) + "  " + res.getString(2) + "  " + res.getInt(3));
-        }
-        stmt.close();
+        return res;
     }
 
-    private static void insert(Connection con) throws SQLException
+    public void insert() throws SQLException
     {
         logger.info("Inserting into employees");
             Statement stmt = con.createStatement();
@@ -59,7 +55,7 @@ public class Hello {
             stmt.close();
     }
 
-    private static void delete(Connection con) throws SQLException
+    public void delete() throws SQLException
     {
         logger.info("Deleting Employee");
         Statement stmt = con.createStatement();
