@@ -1,0 +1,7 @@
+2022-12-18 15:00:46 INFO  Hello:50 - Inserting into employees
+  2022-12-18 15:00:46 INFO  Hello:38 - Selecting Employee
+  2022-12-18 15:00:46 INFO  Hello:43 - 5  user5  25
+  2022-12-18 15:00:46 INFO  Hello:43 - 6  user6  26
+  2022-12-18 15:00:46 INFO  Hello:43 - 7  user7  27
+  2022-12-18 15:00:46 INFO  Hello:64 - Deleting Employee
+  
