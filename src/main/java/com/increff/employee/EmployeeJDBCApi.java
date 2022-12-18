@@ -4,23 +4,17 @@ import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.io.InputStream;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-public class EmployeeApi {
-    private final static Logger logger = Logger.getLogger(EmployeeApi.class.getName());
+public class EmployeeJDBCApi {
+    private final static Logger logger = Logger.getLogger(EmployeeJDBCApi.class.getName());
     private static  Connection con;
-    public static void main(String[] args) throws SQLException, ClassNotFoundException, FileNotFoundException, IOException
-    {
 
-    }
-
-    public EmployeeApi() throws Exception
+    public EmployeeJDBCApi() throws Exception
     {
         BasicConfigurator.configure();
         Properties props = new Properties();
